@@ -20,3 +20,12 @@ it('should show search bar', () => {
 it('should show main menu', () => {
     expect(getByTestId( container, 'menu')).toBeTruthy();
 });
+
+it('should show home filter', () => {
+    expect(getByTestId(container, 'home-type')).toBeTruthy();
+    expect(getByTestId(container, 'dates')).toBeTruthy();
+    expect(getByTestId(container, 'guests')).toBeTruthy();
+    expect(getByTestId(container, 'price')).toBeTruthy();
+    expect(getByTestId(container, 'rooms')).toBeTruthy();
+    expect(getByTestId(container, 'amenities')).toBeTruthy();
+});
