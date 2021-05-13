@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, getAllByTestId, render } from '@testing-library/react';
+import { act, getAllByTestId, getNodeText, render } from '@testing-library/react';
 
 import Home from './home';
 import apiClient from '../services/apiClient';
@@ -53,4 +53,31 @@ it('should show available homes', () => {
 
     expect(homes).toBeTruthy();
     expect(homes.length).toBeGreaterThan(0);
+});
+
+it('should show home name', () => {
+    const homeTitles = getAllByTestId(container, 'home-title');
+
+    expect(homeTitles[0]).toBeTruthy();
+    expect(getNodeText(homeTitles[0])).toBe('Test Home 1');
+});
+
+it('should show home image',() => {
+    const homeImages = getAllByTestId(container, 'home-image');
+
+    expect(homeImages[0]).toBeTruthy();
+});
+
+it('should show home location', () => {
+    const homeLocations = getAllByTestId(container, 'home-location');
+
+    expect(homeLocations[0]).toBeTruthy();
+    expect(getNodeText(homeLocations[0])).toBe('Test Location 1');
+});
+
+it('should show price of home', () => {
+    const homePrices = getAllByTestId(container, 'home-price');
+
+    expect(homePrices[0]).toBeTruthy();
+    expect(getNodeText(homePrices[0])).toBe("$13.99");
 });
