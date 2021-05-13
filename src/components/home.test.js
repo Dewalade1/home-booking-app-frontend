@@ -1,12 +1,14 @@
 import React from 'react';
-import { getAllByTestId, render } from '@testing-library/react';
+import { act, getAllByTestId, render } from '@testing-library/react';
 
 import Home from './home';
 
 let container = null;
 
-beforeEach(() => {
+beforeEach(async () => {
     container = render(<Home/>).container;
+
+    await act(async () => {})
 });
 
 it('should show available homes', () => {
@@ -14,4 +16,4 @@ it('should show available homes', () => {
 
     expect(homes).toBeTruthy();
     expect(homes.length).toBeGreaterThan(0);
-})
+});
