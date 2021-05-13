@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+import { Dialog, DialogContent } from '@material-ui/core';
+
 import apiClient from '../services/apiClient';
 import bookingDialogService from '../services/bookingDialogService';
+import { Subscription } from 'rxjs';
 
 export default function Home () {
 
     const [homesState, setHomesState] = useState([]);
+    const [bookingDialogState, setBookingDialogState] = useState({ open: false, home: null });
 
     useEffect(() => {
 
@@ -13,6 +17,12 @@ export default function Home () {
 
       homesDataPromise.then(homesData => setHomesState(homesData));
     }, []);
+
+    useEffect(() => {
+        const subscription = bookingDialogService.events$.subscribe(state => setBookingDialogState(state));
+
+        return () => subscription.unsubscribe();
+    }, [bookingDialogState]);
 
     let homes;
 
@@ -39,13 +49,14 @@ export default function Home () {
             );
         });
 
-    return(
-        <div className="container m4 text-center">
-            <h1>Our Homes</h1>
-            <h4>Choose from our selection of wonderful homes</h4>
-            <div className="row d-flex justify-content-center">
-                {homes}
-            </div>
-        </div>
-    )
+    return (
+      <div className="container m4 text-center">
+        <h1>Our Homes</h1>
+        <h4>Choose from our selection of wonderful homes</h4>
+        <div className="m-t-2 row d-flex justify-content-center align-items-center">{homes}</div>
+        <Dialog onClose={() => bookingDialogService.close()} open={bookingDialogState.open}>
+          <DialogContent>{bookingDialogState.home ? bookingDialogState.home.title : "Unnamed House"}</DialogContent>
+        </Dialog>
+      </div>
+    );
 };
