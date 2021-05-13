@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import apiClient from '../services/apiClient';
+import bookingDialogService from '../services/bookingDialogService';
 
 export default function Home () {
 
@@ -27,7 +28,7 @@ export default function Home () {
                     <div data-testid="home-location">{home.location}</div>
                     <div data-testid="home-price">${home.price}/night</div>
                     <div className="mtb-1 d-grid gap-2">
-                      <button data-testid="home-booking-btn" className="btn btn-outline-primary" type="button">
+                      <button data-testid="home-booking-btn" className="btn btn-outline-primary" type="button" onClick={() => bookingDialogService.open(home)}>
                         {" "}
                         Book This Home
                       </button>
