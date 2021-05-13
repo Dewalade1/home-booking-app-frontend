@@ -20,14 +20,18 @@ export default function Home () {
               <div className="col-6 col-md-6 col-lg-4 col-xl-3 m-b-3" key={home.id}>
                 <div data-testid="home" className="card w-100 home-card">
                   <img data-testid="home-image" src={home.image} alt="home img" className="card-img-top" height="200" />
-                  <div className="card-body m-b-1">
+                  <div className="card-body">
                     <div data-testid="home-title" className="card-title h5 mtb-1">
                       {home.title}
                     </div>
-                    <div data-testid="home-location">
-                      {home.location}
-                    </div>
+                    <div data-testid="home-location">{home.location}</div>
                     <div data-testid="home-price">${home.price}/night</div>
+                    <div className="mtb-1 d-grid gap-2">
+                      <button data-testid="home-booking-btn" className="btn btn-outline-primary" type="button">
+                        {" "}
+                        Book This Home
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
