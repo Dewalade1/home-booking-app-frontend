@@ -1,5 +1,5 @@
 import React from 'react';
-import { getByTestId, render } from "@testing-library/react";
+import { fireEvent, getByTestId, render } from "@testing-library/react";
 
 import HomeBooking from './homeBooking';
 
@@ -39,7 +39,20 @@ it('should show check-out date field', () => {
     expect(getByTestId(container, "home-book-checkout-date")).toBeTruthy();
 });
 
-// should calculate total
+it('should calculate total price per night', () => {
+
+    fireEvent.change(
+        getByTestId(container, 'home-book-checkin-date', 
+        { target: { value: '2021-12-04' }})
+    );
+
+    fireEvent.change(
+        getByTestId(container, 'home-book-checkout-date', 
+        { target: { value: '2021-12-07'}})
+    );
+
+    expect(getByTestId(container, "total-price")).toBe('375');
+});
 // should book home after clicking the book button
 // should close the dialog and show notification after booking home
 
