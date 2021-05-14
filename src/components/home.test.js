@@ -12,30 +12,35 @@ beforeEach(async () => {
     jest.spyOn(apiClient, 'getHomes').mockImplementation(() => {
       return Promise.resolve([
         {
+          id: "1",
           title: "Test Home 1",
           image: "images/house-img-1.jpg",
           location: "Test Location 1",
           price: "13.99",
         },
         {
+          id: "2",
           title: "Test Home 2",
           image: "images/house-img-2.jpg",
           location: "Test Location 2",
           price: "10.99",
         },
         {
+          id: "3",
           title: "Test Home 3",
           image: "images/house-img-3.jpg",
           location: "Test Location 3",
           price: "20.99",
         },
         {
+          id: "4",
           title: "Test Home 4",
           image: "images/house-img-4.jpg",
           location: "Test Location 4",
           price: "16.99",
         },
         {
+          id: "5",
           title: "Test Home 5",
           image: "images/house-img-5.jpg",
           location: "Test Location 5",
@@ -96,6 +101,7 @@ it('should open home booking dialog when button is clicked', () => {
 
     homeButtons[0].click();
     expect(bookingDialogService.open).toHaveBeenCalledWith({
+      id: "1",
       title: "Test Home 1",
       image: "images/house-img-1.jpg",
       location: "Test Location 1",
