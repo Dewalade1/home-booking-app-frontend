@@ -6,6 +6,7 @@ import apiClient from "../services/apiClient";
 import bookingDialogService from "../services/bookingDialogService";
 
 import HomeBooking from './homeBooking';
+import Notification from './notification';
 
 export default function Home() {
   const [homesState, setHomesState] = useState([]);
@@ -63,6 +64,7 @@ export default function Home() {
           <HomeBooking homeData={bookingDialogState.home} />
         </DialogContent>
       </Dialog>
+      <Notification />
     </div>
   );
 }

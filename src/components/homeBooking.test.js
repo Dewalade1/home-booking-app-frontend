@@ -59,7 +59,7 @@ it("should calculate total price per night", () => {
 it('should book home after clicking the book button', () => {
     // spy on apiClient
     jest.spyOn(apiClient, 'bookHome').mockImplementation(() => {
-        Promise.resolve();
+        Promise.resolve({ message: "Congrats!! Your Mocked home booking was Successful!" });
     });
 
     // Select dates
@@ -83,7 +83,7 @@ it('should book home after clicking the book button', () => {
 it('should close the dialog and show notification after booking home', async () => {
 
     // Spy on the client
-    jest.spyOn(apiClient, 'bookHome').mockImplementation(() => Promise.resolve("Congrats!! Your Mocked home booking was Successful!"));
+    jest.spyOn(apiClient, 'bookHome').mockImplementation(() => Promise.resolve({ message: "Congrats!! Your Mocked home booking was Successful!" }));
 
     // SpyOn bookingDialog service
     jest.spyOn(bookingDialogService, 'close').mockImplementation(() => {});

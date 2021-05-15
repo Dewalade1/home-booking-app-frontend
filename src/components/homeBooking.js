@@ -29,9 +29,10 @@ export default function HomeBooking ({homeData}) {
     }, [checkinDate, checkoutDate, homeData ]);
 
     const handleHomeBooking = () => {
-        apiClient.bookHome(homeData, checkinDate, checkoutDate).then(message => {
+        apiClient.bookHome(homeData, checkinDate, checkoutDate)
+          .then(response => {
             bookingDialogService.close();
-            notificationService.open(message);
+            notificationService.open(response.message);
         });
     };
 
