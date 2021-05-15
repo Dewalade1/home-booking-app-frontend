@@ -46,6 +46,7 @@ export default function HomeBooking ({homeData}) {
 
             <div data-testid="stay-length">{ lengthOfStay } {lengthOfStay === 1 ? "night" : "nights"}</div>
             <div data-testid="total-price">{ totalPrice }</div>
+            <button data-testid="book-btn"> Book Now</button>
         </>
        ) : (
         <div data-testid="empty-home-book"></div>

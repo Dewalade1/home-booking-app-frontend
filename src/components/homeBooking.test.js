@@ -2,6 +2,7 @@ import React from "react";
 import { fireEvent, getByTestId, render } from "@testing-library/react";
 
 import HomeBooking from "./homeBooking";
+import apiClient from "../services/apiClient";
 
 let container = null;
 
@@ -53,7 +54,29 @@ it("should calculate total price per night", () => {
   expect(getByTestId(container, "total-price").textContent).toBe("93000");
 });
 
-//  should book home after clicking the book button
+it('should book home after clicking the book button', () => {
+    // spy on apiClient
+    jest.spyOn(apiClient, 'bookHome').mockImplementation(() => {
+        Promise.resolve();
+    });
+
+    // Select dates
+    fireEvent.change(
+        getByTestId(container, 'home-book-checkin-date'),
+        { target: { value: "2021-12-04" } }
+    );
+
+    fireEvent.change( 
+        getByTestId(container, "home-book-checkout-date"),
+        { target: { value: "2021-12-07" } }
+    );
+
+    // click on book button
+    getByTestId(container, "book-btn").click();
+
+    //assert that apiClient Booked the home
+    expect(apiClient.bookHome).toHaveBeenCalledWith(mockedHome, "2021-12-04", "2021-12-07");
+});
 // should close the dialog and show notification after booking home
 
 it("should show empty when no home is provided", () => {
