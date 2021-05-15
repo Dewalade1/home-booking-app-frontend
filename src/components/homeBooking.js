@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import apiClient from '../services/apiClient';
+import bookingDialogService from '../services/bookingDialogService';
+import notificationService from '../services/notificationService';
 
 var _ = require('lodash');
 
@@ -27,7 +29,10 @@ export default function HomeBooking ({homeData}) {
     }, [checkinDate, checkoutDate, homeData ]);
 
     const handleHomeBooking = () => {
-        apiClient.bookHome(homeData, checkinDate, checkoutDate).then(response => console.log(response));
+        apiClient.bookHome(homeData, checkinDate, checkoutDate).then(message => {
+            bookingDialogService.close();
+            notificationService.open(message);
+        });
     };
 
     return (

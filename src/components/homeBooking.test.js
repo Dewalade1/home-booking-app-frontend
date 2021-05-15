@@ -1,8 +1,10 @@
 import React from "react";
-import { fireEvent, getByTestId, render } from "@testing-library/react";
+import { act, fireEvent, getByTestId, render } from "@testing-library/react";
 
 import HomeBooking from "./homeBooking";
 import apiClient from "../services/apiClient";
+import bookingDialogService from "../services/bookingDialogService";
+import notificationService from "../services/notificationService";
 
 let container = null;
 
@@ -77,7 +79,38 @@ it('should book home after clicking the book button', () => {
     //assert that apiClient Booked the home
     expect(apiClient.bookHome).toHaveBeenCalledWith(mockedHome, "2021-12-04", "2021-12-07");
 });
-// should close the dialog and show notification after booking home
+
+it('should close the dialog and show notification after booking home', async () => {
+
+    // Spy on the client
+    jest.spyOn(apiClient, 'bookHome').mockImplementation(() => Promise.resolve("Congrats!! Your Mocked home booking was Successful!"));
+
+    // SpyOn bookingDialog service
+    jest.spyOn(bookingDialogService, 'close').mockImplementation(() => {});
+
+    // SpyOn notification Service
+    jest.spyOn(notificationService, 'open').mockImplementation(() => {});
+
+    // enter Dates and Click book btn
+    fireEvent.change( 
+        getByTestId(container, 'home-book-checkin-date'),
+        { target: { value: "2021-12-04" } }
+    );
+
+    fireEvent.change(
+        getByTestId(container, "home-book-checkout-date"), 
+        { target: { value: "2021-12-07" } });
+
+    getByTestId(container, 'book-btn').click();
+
+    act(async () => {});
+
+    // assert that dialog service closed the home booking dialog
+    expect(bookingDialogService.close).toHaveBeenCalled();
+
+    // assert that the notification service posted a notification
+    expect(notificationService.open).toHaveBeenCalledWith("Congrats!! Your Mocked home booking was Successful!");
+});
 
 it("should show empty when no home is provided", () => {
   container = render(<HomeBooking home={null} />).container;
