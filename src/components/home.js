@@ -49,14 +49,17 @@ export default function Home() {
   });
 
   return (
-    <div className="container m4 text-center">
+    <div className="container m-t-3 text-center">
       <h1>Our Homes</h1>
       <h4>Choose from our selection of wonderful homes</h4>
       <div className="m-t-3 row d-flex justify-content-center align-items-center">{homes}</div>
-      <Dialog onClose={() => bookingDialogService.close()} open={bookingDialogState.open}>
+      <Dialog 
+       maxWidth="md"
+       fullWidth={ true }
+       onClose={ () => bookingDialogService.close() } 
+       open={ bookingDialogState.open }
+       >
         <DialogContent>
-          <b>{bookingDialogState.home ? bookingDialogState.home.title : "Unnamed House"}</b>
-          <hr />
           <HomeBooking homeData={bookingDialogState.home} />
         </DialogContent>
       </Dialog>
