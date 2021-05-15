@@ -35,7 +35,7 @@ export default function Home() {
               {home.title}
             </div>
             <div data-testid="home-location">{home.location}</div>
-            <div data-testid="home-price">${home.price}/night</div>
+            <div data-testid="home-price">=N={home.price}/night</div>
             <div className="mtb-1 d-grid gap-2">
               <button data-testid="home-booking-btn" className="btn btn-outline-primary" type="button" onClick={() => bookingDialogService.open(home)}>
                 {" "}
