@@ -32,13 +32,13 @@ export default function Home() {
         <div data-testid="home" className="card w-100 home-card">
           <img data-testid="home-image" src={home.image} alt="home img" className="card-img-top" height="200" />
           <div className="card-body">
-            <div data-testid="home-title" className="card-title h5 mtb-1">
+            <div data-testid="home-title" className="card-title h5 mtb-1 text-success">
               {home.title}
             </div>
             <div data-testid="home-location">{home.location}</div>
             <div data-testid="home-price">=N={home.price}/night</div>
             <div className="mtb-1 d-grid gap-2">
-              <button data-testid="home-booking-btn" className="btn btn-outline-primary" type="button" onClick={() => bookingDialogService.open(home)}>
+              <button data-testid="home-booking-btn" className="btn btn-outline-success" type="button" onClick={() => bookingDialogService.open(home)}>
                 {" "}
                 Book This Home
               </button>
@@ -51,15 +51,10 @@ export default function Home() {
 
   return (
     <div className="container m-t-3 text-center">
-      <h1>Our Homes</h1>
-      <h4>Choose from our selection of wonderful homes</h4>
+      <h1 className="text-success">Our Homes</h1>
+      <h4 className="text-success">Choose from our selection of wonderful homes</h4>
       <div className="m-t-3 row d-flex justify-content-center align-items-center">{homes}</div>
-      <Dialog 
-       maxWidth="md"
-       fullWidth={ true }
-       onClose={ () => bookingDialogService.close() } 
-       open={ bookingDialogState.open }
-       >
+      <Dialog maxWidth="md" fullWidth={true} onClose={() => bookingDialogService.close()} open={bookingDialogState.open}>
         <DialogContent>
           <HomeBooking homeData={bookingDialogState.home} />
         </DialogContent>

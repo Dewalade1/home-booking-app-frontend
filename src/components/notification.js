@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
+import MuiAlert from "@material-ui/lab/Alert";
 import { Snackbar } from '@material-ui/core';
 import notificationService from '../services/notificationService';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function Notification () {
 
@@ -12,12 +18,11 @@ export default function Notification () {
         return () => subscription.unsubscribe();
     });
 
-    return(
-        <Snackbar
-         open={ notificationData.open }
-         onClose={() => notificationService.close() }
-         message={ notificationData.message }
-         autoHideDuration={ 3500 }
-        />
-    )
+    return (
+      <Snackbar open={notificationData.open} anchorOrigin={{ vertical: "top", horizontal: "center" }} message={notificationData.message} autoHideDuration={3500}>
+        <Alert severity="success" onClose={() => notificationService.close()} autoHideDuration={3500}>
+          {notificationData.message}
+        </Alert>
+      </Snackbar>
+    );
 };
