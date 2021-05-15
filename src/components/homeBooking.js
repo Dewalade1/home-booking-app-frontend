@@ -25,7 +25,7 @@ export default function HomeBooking ({homeData}) {
         const total = stayLength * price;
 
         setLengthOfStay(stayLength);
-        Number.isInteger(total) ? setTotalPrice(total) : setTotalPrice(0);
+        (total > 0) ? setTotalPrice(total) : setTotalPrice('--');
         
     }, [checkinDate, checkoutDate, homeData ]);
 

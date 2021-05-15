@@ -56,6 +56,14 @@ it("should calculate total price per night", () => {
   expect(getByTestId(container, "total-price").textContent).toBe("Total: =N=93000");
 });
 
+it("should show =N=0 when invalid date range is entered", () => {
+  fireEvent.change(getByTestId(container, "home-book-checkin-date"), { target: { value: "2021-12-04" } });
+
+  fireEvent.change(getByTestId(container, "home-book-checkout-date"), { target: { value: "2021-12-02" } });
+
+  expect(getByTestId(container, "total-price").textContent).toBe("Total: =N=--");
+});
+
 it('should book home after clicking the book button', () => {
     // spy on apiClient
     jest.spyOn(apiClient, 'bookHome').mockImplementation(() => {
