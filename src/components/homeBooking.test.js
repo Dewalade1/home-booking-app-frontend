@@ -111,7 +111,7 @@ it('should close the dialog and show notification after booking home', async () 
 
     getByTestId(container, 'book-btn').click();
 
-    act(async () => {});
+    await act(async () => {});
 
     // assert that dialog service closed the home booking dialog
     expect(bookingDialogService.close).toHaveBeenCalled();

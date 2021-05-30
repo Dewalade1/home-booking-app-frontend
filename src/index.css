@@ -45,8 +45,20 @@
   padding-right: 1em;
 }
 
+.ptb-2 {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
 /* HOME CARDS */
 
 .home-card:hover {
   border-color: rgb(20, 150, 41);
+}
+
+/* Footer */
+
+.footer {
+  background-color:rgb(23, 130, 145);
+  color: aliceblue;
 }
