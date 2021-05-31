@@ -59,6 +59,21 @@
 /* Footer */
 
 .footer {
-  background-color:rgb(23, 130, 145);
+  background-color:rgb(20, 150, 41);
   color: aliceblue;
+}
+
+.footer-link {
+  color: aliceblue;
+  margin: 0 100%;
+}
+
+.footer-link:hover {
+  color: rgb(147, 243, 159);
+}
+
+#footer-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
 }
