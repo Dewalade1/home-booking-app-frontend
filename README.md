@@ -2,7 +2,12 @@
 ![deployed with](https://img.shields.io/badge/deployed%20with-netlify-brightgreen?style=for-the-badge)
 ![netlify build](https://img.shields.io/netlify/3c68619b-2917-4852-b934-1c00fe784c5c?style=for-the-badge)
 
-![Licence](https://img.shields.io/github/license/Dewalade1/home-booking-app-frontend?style=for-the-badge)
+![repo stars](https://img.shields.io/github/stars/Dewalade1/home-booking-app-frontend?style=for-the-badge)
+![pull requests](https://img.shields.io/github/issues-pr/Dewalade1/home-booking-app-frontend?style=for-the-badge)
+![Contributors](https://img.shields.io/github/contributors/Dewalade1/home-booking-app-frontend?style=for-the-badge)
+
+![licence](https://img.shields.io/github/license/Dewalade1/home-booking-app-frontend?style=for-the-badge)
+![environments](https://img.shields.io/badge/environments%20-2-yellowgreen?style=for-the-badge)
 
 ![top Language percentage](https://img.shields.io/github/languages/top/Dewalade1/home-booking-app-frontend?style=for-the-badge)
 ![language count](https://img.shields.io/github/languages/count/Dewalade1/home-booking-app-frontend?style=for-the-badge)
@@ -11,7 +16,7 @@
 # Ocean Hottage App
 Ocean Cottage is a mock home-booking app developed by me. It was developed using the Test-Driven Development method.
 
-[Visit the website](https://jolly-engelbart-a78626.netlify.app)
+[Visit the website](https://ocean-cottage.netlify.app/)
 
 [Find the data for the houses here](https://run.mocky.io/v3/91a0f51b-ceca-4a6f-9882-20dd28184c19)
 
